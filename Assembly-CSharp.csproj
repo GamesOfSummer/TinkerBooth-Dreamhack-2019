@@ -62,8 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\DinoScript.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\KnightScript.cs" />
+    <Compile Include="Assets\Scripts\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\ValueChanged.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/summe/Documents/GITHUB/TinkerBooth-Dreamhack-2019/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class KnightScript : MonoBehaviour
 {
-
     public float speed = 10;
 
     private Animator animator;
 
+    private Vector3 startingLocation;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        startingLocation = transform.position;
     }
 
     // Update is called once per frame
@@ -30,6 +31,25 @@ public class KnightScript : MonoBehaviour
         {
             animator.SetBool("Running", false);
         }
+    }
+
+
+
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Bullet")
+        {
+            Reset();
+        }
+        
+    }
+
+
+
+    public void Reset()
+    {
+        transform.position = startingLocation;
     }
 
     public void ChangeSpeed(int newSpeed)
