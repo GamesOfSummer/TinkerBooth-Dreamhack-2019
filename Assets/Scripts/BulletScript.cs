@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    void Start()
+    public bool running = false;
+
+    void Update()
     {
-        StartCoroutine(FireBullets());
+        if(running == false)
+        {
+            running = true;
+            StartCoroutine(FireBullets());
+        }      
     }
 
 
@@ -14,6 +20,7 @@ public class BulletScript : MonoBehaviour
     private IEnumerator FireBullets()
     {
         yield return new WaitForSeconds(1.0F);
+        running = true;
         this.gameObject.SetActive(false);
     }
 

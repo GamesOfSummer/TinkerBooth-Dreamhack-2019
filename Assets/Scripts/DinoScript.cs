@@ -39,6 +39,7 @@ public class DinoScript : MonoBehaviour
         if (bullet != null)
         {
             bullet.SetActive(true);
+            bullet.GetComponent<BulletScript>().running = false;
 
             bullet.transform.position = gameObject.transform.position + offset;
             yield return new WaitForSeconds(0.1F);
