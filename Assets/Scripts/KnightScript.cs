@@ -52,7 +52,7 @@ public class KnightScript : MonoBehaviour
         transform.position = startingLocation;
     }
 
-    public void ChangeSpeed(int newSpeed)
+    public void ChangeSpeed(float newSpeed)
     {
         speed = newSpeed;
     }

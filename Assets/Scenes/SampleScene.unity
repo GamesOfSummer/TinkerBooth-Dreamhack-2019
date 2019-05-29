@@ -643,6 +643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knight: {fileID: 618988408}
+  dino: {fileID: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1161,6 +1162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58bc83a203318f0458efd6cd1c1660d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  running: 0
 --- !u!1 &666083630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,6 +1794,7 @@ GameObject:
   - component: {fileID: 1064108603}
   - component: {fileID: 1064108602}
   - component: {fileID: 1064108601}
+  - component: {fileID: 1064108604}
   m_Layer: 5
   m_Name: InputField - Boss Attack Speed
   m_TagString: Untagged
@@ -1872,7 +1875,18 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1064108604}
+        m_MethodName: changeBossAttackSpeed
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1064108601}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.InputField, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.InputField+SubmitEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_OnValueChanged:
@@ -1924,6 +1938,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064108599}
   m_CullTransparentMesh: 0
+--- !u!114 &1064108604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064108599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2038fa775038d954c9dd6d11286d39e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1069558609
 GameObject:
   m_ObjectHideFlags: 0
@@ -2817,8 +2843,9 @@ GameObject:
   - component: {fileID: 1891789785}
   - component: {fileID: 1891789784}
   - component: {fileID: 1891789783}
+  - component: {fileID: 1891789786}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Reset Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2886,7 +2913,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1891789784}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1891789786}
+        m_MethodName: ResetButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1891789784
@@ -2926,6 +2964,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891789781}
   m_CullTransparentMesh: 0
+--- !u!114 &1891789786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891789781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2038fa775038d954c9dd6d11286d39e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1908793634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,7 +2989,7 @@ GameObject:
   - component: {fileID: 1908793638}
   - component: {fileID: 1908793635}
   m_Layer: 0
-  m_Name: Dino - Boss
+  m_Name: Dino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3017,6 +3067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6993f72d0bb1d4bb486f59fda44574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 1
 --- !u!1 &2036281049
 GameObject:
   m_ObjectHideFlags: 0

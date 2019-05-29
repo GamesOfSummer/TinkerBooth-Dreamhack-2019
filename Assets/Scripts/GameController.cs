@@ -10,12 +10,11 @@ public class GameController : MonoBehaviour
 
 
     public KnightScript knight;
+    public DinoScript dino;
 
     private void Awake()
     {
 
-
-      
             if (instance)
             {
                 Debug.Log("Destroying irrelevant GameController instance");
