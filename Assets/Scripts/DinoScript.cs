@@ -6,9 +6,14 @@ public class DinoScript : MonoBehaviour
 {
     public float waitTime = 0.1F;
     // Start is called before the first frame update
+
+    private Animator animator;
+    private bool isDead = false;
+
     void Start()
     {
         StartCoroutine(FireBullets());
+        animator = GetComponent<Animator>();
     }
 
 
@@ -21,13 +26,11 @@ public class DinoScript : MonoBehaviour
     {        
         while(true)
             {
-            yield return FireBulletFxn(new Vector3(0.0F, -distanceAway, 0), new Vector2(-forceToThrow, -forceToThrow));
-            yield return FireBulletFxn(new Vector3(-distanceAway, -distanceAway, 0), new Vector2(-forceToThrow, -forceToThrow));
-            yield return FireBulletFxn(new Vector3(-distanceAway, 0.0F, 0), new Vector2(-forceToThrow, -forceToThrow));
-
-
-            yield return FireBulletFxn(new Vector3(-distanceAway, 0.0F, 0), new Vector2(-forceToThrow, 0));
-            yield return FireBulletFxn(new Vector3(-distanceAway, 0.0F, 0), new Vector2(0, -forceToThrow ));
+            yield return FireBulletFxn(new Vector3(-distanceAway, 0, 0), new Vector2(-forceToThrow, 0));
+            yield return FireBulletFxn(new Vector3(-distanceAway, 0, 0), new Vector2(-forceToThrow, -forceToThrow));
+            yield return FireBulletFxn(new Vector3(-distanceAway, 0, 0), new Vector2(0, -forceToThrow));
+            yield return FireBulletFxn(new Vector3(-distanceAway, 0, 0), new Vector2(-forceToThrow, forceToThrow));
+            yield return FireBulletFxn(new Vector3(-distanceAway, 0, 0), new Vector2(0, forceToThrow ));
 
 
 
@@ -42,24 +45,44 @@ public class DinoScript : MonoBehaviour
     {
 
         GameObject bullet = ObjectPool.SharedInstance.GetPooledObject("Bullet");
-        if (bullet != null)
+        if (bullet != null && isDead == false)
         {
             bullet.SetActive(true);
             bullet.GetComponent<BulletScript>().running = false;
 
             bullet.transform.position = gameObject.transform.position + offset;
-            yield return new WaitForSeconds(0.1F);
             bullet.GetComponent<Rigidbody2D>().AddForce(force);
-            yield return new WaitForSeconds(0.2F);
+            yield return new WaitForSeconds(0.1F);
 
         }
 
     
     }
 
+
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("--" + other.name);
+
+        if (other.tag == "Player")
+        {
+            animator.SetBool("Dead", true);
+            isDead = true;
+        }
+
+    }
+
+
     public void ChangeWaitTime(float newSpeed)
     {
         waitTime = newSpeed;
+    }
+
+    public void Reset()
+    {
+        animator.SetBool("Dead", false);
+        isDead = false;
     }
 
 

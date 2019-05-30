@@ -15,6 +15,7 @@ public class ValueChanged : MonoBehaviour
         ResetKnight();
 
         actuallyBossAttackSpeed(0.5F);
+        ResetDino();
     }
 
     public void changeKnightSpeed(InputField input)
@@ -83,7 +84,11 @@ public class ValueChanged : MonoBehaviour
         knight.GetComponent<DinoScript>().ChangeWaitTime(speed);
     }
 
-
+    private void ResetDino()
+    {
+        var knight = GameObject.Find("Dino");
+        knight.GetComponent<DinoScript>().Reset();
+    }
 
 
 }
