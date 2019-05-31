@@ -7,34 +7,28 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
-
-
     public KnightScript knight;
     public DinoScript dino;
 
     private void Awake()
     {
+        if (instance)
+        {
+            Debug.Log("Destroying irrelevant GameController instance");
+            Destroy(this);
+        }
 
-            if (instance)
-            {
-                Debug.Log("Destroying irrelevant GameController instance");
-                Destroy(this);
-            }
-
-            instance = this;
-
+        instance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     public void changeKnightSpeed(InputField input)
